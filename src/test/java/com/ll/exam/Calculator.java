@@ -17,12 +17,23 @@ public class Calculator {
         }
 
         if(s.length() > 5) {
-            return runTriplePlus(s);
+            if(isMultiply) {
+                return runMixedCalc(s);
+            }
+            else {
+                return runTriplePlus(s);
+            }
         }
 
         return runPlus(s);
     }
 
+    private static int runMixedCalc(String s) {
+        // 괄호 찾기
+        // 괄호 안에 있는거 따로 괄호 밖에 있는거 따로따로 저장하기
+        // 괄호 안 먼저 계산 -> 밖에 있는거랑 계산해나가기
+
+    }
 
     private static int runTriplePlus(String s) {
         String[] sBits = s.split(" \\+ "); // + 로 문자열 split
@@ -59,7 +70,7 @@ public class Calculator {
     }
 
     private static int runDivision(String s) {
-        String[] sBits = s.split(" \\/ "); // * 로 문자열 split
+        String[] sBits = s.split(" \\/ "); // / 로 문자열 split
         int no1 = Integer.parseInt(sBits[0]);
         int no2 = Integer.parseInt(sBits[1]);
 
